@@ -71,23 +71,98 @@ Airecon
 공장 관리자 또는 안전 담당자가 산재 예방 감시 드론 운용 의뢰
 
 
-🛰️ 공장 현장 방문 및 V-SLAM 매핑
+### 🛰️ 공장 현장 방문 및 V-SLAM 매핑
 
 드론을 이용해 실내 공간 V-SLAM 매핑
 
-공장 구조, 작업자 위치, 위험 구역을 3D 지도화
-
 향후 경로 계획과 비행 안전 확보
 
-🚁 멀티드론 시스템 배치 및 가동
+```bash
+cd ~/path/to/PX4-Autopilot/Tools/simulation/gz
+python3 simulation-gazebo --world tugbot_warehouse
+```
+```bash
+make px4_sitl gz_x500_depth
+```
+
+- 그 이후 ros_gz 진행 후 ros2 토픽 받아온 후
+
+```bash
+
+source install/setup.bash
+
+ros2 launch px4msgtest rtabmap_sitl.launch.py
+```
+
+![Airecon Demo](2nd.png)
+
+
+### 🚁 멀티드론 시스템 배치 및 가동
 
 여러 대의 드론을 동시에 배치하여 공장 전체 감시
 
-각 드론의 임무 및 경로 자동 분배
+한 드론의 임무가 끝나면 다른 드론이 자동으로 테이크 오프 후 임무 수행
 
-PX4 + ROS 2 기반 자율 비행과 YOLO 기반 실시간 이상 상황 감지 수행
+```bash
+cd ~/path/to/PX4-Autopilot/Tools/simulation/gz
+python3 simulation-gazebo --world tugbot_warehouse
+```
+```bash
+PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL_POSE="0,0,0.51" PX4_SIM_MODEL=gz_x500_gimbal ./build/px4_sitl_default/bin/px4 -i 1
+```
+```bash
+PX4_GZ_WORLD=world_demo PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL_POSE="-3,0,0.51" PX4_SIM_MODEL=gz_x500_gimbal ./build/px4_sitl_default/bin/px4 -i 2
+```
+```bash
+MicroXRCEAgent udp4 -p 8888
+```
+```bash
+ros2 run ros_gz_bridge parameter_bridge \
+  /world/world_demo/model/x500_gimbal_1/model/oakd_lite_camera_5/link/camera_link/sensor/StereoOV7251/depth_image@sensor_msgs/msg/Image@gz.msgs.Image \
+  /world/world_demo/model/x500_gimbal_1/model/oakd_lite_camera_5/link/camera_link/sensor/IMX214/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo \
+  /world/world_demo/model/x500_gimbal_1/model/oakd_lite_camera_5/link/camera_link/sensor/IMX214/image@sensor_msgs/msg/Image@gz.msgs.Image \
+  /world/world_demo/model/x500_gimbal_1/model/oakd_lite_camera_2/link/camera_link/sensor/StereoOV7251/depth_image@sensor_msgs/msg/Image@gz.msgs.Image \
+  /world/world_demo/model/x500_gimbal_1/link/camera_link/sensor/camera_imu/imu@sensor_msgs/msg/Imu@gz.msgs.IMU \
+  /world/world_demo/model/x500_gimbal_1/link/camera_link/sensor/gimbal/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo \
+  /world/world_demo/model/x500_gimbal_1/link/camera_link/sensor/gimbal/image@sensor_msgs/msg/Image@gz.msgs.Image \
+  /world/world_demo/model/x500_gimbal_1/model/oakd_lite_camera_2/link/camera_link/sensor/IMX214/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo \
+  /world/world_demo/model/x500_gimbal_1/model/oakd_lite_camera_2/link/camera_link/sensor/IMX214/image@sensor_msgs/msg/Image@gz.msgs.Image \
+  /world/world_demo/model/x500_gimbal_2/model/oakd_lite_camera_5/link/camera_link/sensor/StereoOV7251/depth_image@sensor_msgs/msg/Image@gz.msgs.Image \
+  /world/world_demo/model/x500_gimbal_2/model/oakd_lite_camera_5/link/camera_link/sensor/IMX214/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo \
+  /world/world_demo/model/x500_gimbal_2/model/oakd_lite_camera_5/link/camera_link/sensor/IMX214/image@sensor_msgs/msg/Image@gz.msgs.Image \
+  /world/world_demo/model/x500_gimbal_2/model/oakd_lite_camera_2/link/camera_link/sensor/StereoOV7251/depth_image@sensor_msgs/msg/Image@gz.msgs.Image \
+  /world/world_demo/model/x500_gimbal_2/link/camera_link/sensor/camera_imu/imu@sensor_msgs/msg/Imu@gz.msgs.IMU \
+  /world/world_demo/model/x500_gimbal_2/link/camera_link/sensor/gimbal/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo \
+  /world/world_demo/model/x500_gimbal_2/link/camera_link/sensor/gimbal/image@sensor_msgs/msg/Image@gz.msgs.Image \
+  /world/world_demo/model/x500_gimbal_2/model/oakd_lite_camera_2/link/camera_link/sensor/IMX214/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo \
+  /world/world_demo/model/x500_gimbal_2/model/oakd_lite_camera_2/link/camera_link/sensor/IMX214/image@sensor_msgs/msg/Image@gz.msgs.Image \
+  /model/x500_gimbal_1/command/gimbal_pitch@std_msgs/msg/Float64@gz.msgs.Double \
+  /model/x500_gimbal_1/command/gimbal_yaw@std_msgs/msg/Float64@gz.msgs.Double \
+  /model/x500_gimbal_2/command/gimbal_pitch@std_msgs/msg/Float64@gz.msgs.Double \
+  /model/x500_gimbal_2/command/gimbal_yaw@std_msgs/msg/Float64@gz.msgs.Double
+```
+```bash
+source install/setup.bash
 
-🎯 실시간 상황 분석 및 알람
+ros2 launch aruco_detector aruco_multi.launch.py
+```
+```bash
+source install/setup.bash
+
+ros2 launch precise_land multi_land.launch.py
+```
+```bash
+source install/setup.bash
+
+ros2 run waypoint_flier multi_drone_mission
+```
+```bash
+source install/setup.bash
+
+ros2 run gimbal_control gimbal_control
+```
+
+### 🎯 실시간 상황 분석 및 알람
 
 드론에서 수집된 영상 및 센서 데이터 실시간 분석
 
@@ -95,11 +170,6 @@ PX4 + ROS 2 기반 자율 비행과 YOLO 기반 실시간 이상 상황 감지 �
 
 한 대 드론이 임무를 마치면 다음 드론이 자동으로 이어서 감시
 
-☁️ 데이터 기록 및 대시보드 모니터링
-
-모든 감지 이벤트와 비행 로그를 서버/클라우드에 기록
-
-관리자 대시보드에서 실시간 모니터링 및 후속 조치 가능
      
 
 ---
