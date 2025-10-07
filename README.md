@@ -86,6 +86,7 @@ Airecon
 
 
 <br>
+
 ### - 보다 정확한 V-SLAM을 위해 "멀티카메라" SLAM 사용 (RGBD)
 <br>
 
@@ -181,6 +182,21 @@ source install/setup.bash
 
 ros2 run gimbal_control gimbal_control
 ```
+
+<br>
+
+## 드론스테이션 위 드론 배치
+![Airecon Demo](4th.png)
+
+<br>
+
+## 첫번째 드론이 작업 수행
+![Airecon Demo](5th.gif)
+
+<br>
+
+## 첫번째 드론과 두번째 드론 작업 교대
+![Airecon Demo](6th.gif)
 
 ### 🎯 실시간 상황 분석 및 알람
 
