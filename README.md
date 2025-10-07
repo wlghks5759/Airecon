@@ -37,12 +37,12 @@ Airecon
 
 | Category | Stack |
 |-----------|-------|
-| **Flight Control** | PX4, MAVSDK, ROS 2 Humble |
-| **AI / Vision** | PyTorch, YOLOv12, OpenCV |
+| **Flight Control** | PX4, MAVSDK, ROS 2 Humble, QGC |
+| **AI / Vision** | PyTorch, YOLOv8n, OpenCV |
 | **Communication** | uXRCE-DDS, MAVLink |
-| **Backend** | Flask, Supabase, MySQL |
-| **Frontend** | React, React Native |
-| **Hardware** | Jetson Orin, Pixhawk, Depth Camera |
+| **Backend** | ROS2, flask |
+| **Frontend** | QGC, Gazebo_simulation |
+| **Hardware** | Pixhawk, Depth Camera |
 
 ---
 
