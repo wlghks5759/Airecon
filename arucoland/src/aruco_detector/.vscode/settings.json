@@ -1,0 +1,18 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/yoo/PROJECT/goliath/arucoland/install/px4_msgs/local/lib/python3.10/dist-packages",
+        "/home/yoo/PROJECT/goliath/arucoland/install/opencv_tests/lib/python3.10/site-packages",
+        "/home/yoo/PROJECT/goliath/arucoland/install/image_geometry/local/lib/python3.10/dist-packages",
+        "/home/yoo/PROJECT/goliath/arucoland/install/cv_bridge/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/yoo/PROJECT/goliath/arucoland/install/px4_msgs/local/lib/python3.10/dist-packages",
+        "/home/yoo/PROJECT/goliath/arucoland/install/opencv_tests/lib/python3.10/site-packages",
+        "/home/yoo/PROJECT/goliath/arucoland/install/image_geometry/local/lib/python3.10/dist-packages",
+        "/home/yoo/PROJECT/goliath/arucoland/install/cv_bridge/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}

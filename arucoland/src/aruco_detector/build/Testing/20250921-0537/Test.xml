@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20250921-0537-Experimental"
+	Name="yoo-XPS-15-9530"
+	Generator="ctest-3.22.1"
+	CompilerName="/usr/bin/c++"
+	CompilerVersion="11.4.0"
+	OSName="Linux"
+	Hostname="yoo-XPS-15-9530"
+	OSRelease="6.8.0-79-generic"
+	OSVersion="#79~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 15 16:54:53 UTC 2"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="186"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="20"
+	NumberOfPhysicalCPU="14"
+	TotalVirtualMemory="0"
+	TotalPhysicalMemory="63981"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="1836.31"
+	>
+	<Testing>
+		<StartDateTime>Sep 21 15:23 KST</StartDateTime>
+		<StartTestTime>1758435833</StartTestTime>
+		<TestList/>
+		<EndDateTime>Sep 21 15:23 KST</EndDateTime>
+		<EndTestTime>1758435833</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

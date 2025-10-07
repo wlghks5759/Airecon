@@ -1,0 +1,8 @@
+build/
+.vscode/
+install/
+log/
+cloud.ply
+database.db
+OakD-Lite/
+x500_depth/
