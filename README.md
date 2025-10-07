@@ -3,6 +3,8 @@
 
 ![Airecon Demo](1st.gif)
 
+<br>
+
 ## 📘 Overview
 
 **Airecon**은 AI 기반 비전 인식과 자율비행 기술을 결합하여  
@@ -10,6 +12,7 @@
 **지능형 항공 감시 플랫폼**입니다.
 ### 산재예방이 점점 더 중요해지면서 이러한 산재들을 효과적으로 예방하기위해 프로젝트를 진행하였습니다.
 
+<br>
 
 ## 🚀 Key Features
 
@@ -18,6 +21,7 @@
 - 🧩 **V-SLAM** — 비전을 이용하여 매핑 후 경로생성
 - ☁️ **On Dashboard** — 실시간 모니터링 및 데이터 기록
 
+<br>
 
 ## 🧱 System Architecture
 
@@ -31,7 +35,7 @@ Airecon
     ├── aruco_detector
     ├── precise_land
 ```
-
+<br>
 
 ## ⚙️ Tech Stack
 
@@ -45,7 +49,7 @@ Airecon
 | **Hardware** | Pixhawk, Depth Camera |
 
 ---
-
+<br>
 
 ## 🧭 진행순서
 
@@ -54,7 +58,8 @@ Airecon
 - [ ] 멀티드론 배치 후 산재예방드론 가동
 - [ ] 실시간 상황 YOLO로 분석, 하나의 드론이 임무를 마치면 다음드론이 이어서 임무 수행
 
----
+
+<br>
 
 ## 👥 Contributors
 
@@ -62,10 +67,12 @@ Airecon
 |------|------|-------------|
 | **Holytorch** | 개인 프로젝트 총괄 | System architecture, AI vision, PX4 integration |
 
----
+
+<br>
+
 ## 📖 Scenario / Operational Flow
 
-
+<br>
 ### 📩 산재 예방 드론 의뢰
 
 공장 관리자 또는 안전 담당자가 산재 예방 감시 드론 운용 의뢰
@@ -76,6 +83,12 @@ Airecon
 드론을 이용해 실내 공간 V-SLAM 매핑
 
 향후 경로 계획과 비행 안전 확보
+
+
+<br>
+### - 보다 정확한 V-SLAM을 위해 "멀티카메라" SLAM 사용 (RGBD)
+<br>
+
 
 ```bash
 cd ~/path/to/PX4-Autopilot/Tools/simulation/gz
@@ -96,10 +109,13 @@ ros2 launch px4msgtest rtabmap_sitl.launch.py
 
 ![Airecon Demo](2nd.png)
 
----
+
+
+Waypoint 추출 (추후 전처리 과정 진행)
 
 ![Airecon Demo](3rd.png)
 
+<br>
 
 ### 🚁 멀티드론 시스템 배치 및 가동
 
