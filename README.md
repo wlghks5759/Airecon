@@ -21,19 +21,21 @@
 
 ## 🧱 System Architecture
 
+```text
 Airecon System
 ├── Drone Layer (PX4, MAVSDK, ROS 2)
-│     ├── Flight Control
-│     ├── Sensor Fusion
-│     └── Mission Planner
+│   ├── Flight Control
+│   ├── Sensor Fusion
+│   └── Mission Planner
 ├── AI Vision Layer (Jetson / OpenCV / YOLO)
-│     ├── Anomaly Detection
-│     ├── Object Tracking
-│     └── Event Trigger
+│   ├── Anomaly Detection
+│   ├── Object Tracking
+│   └── Event Trigger
 └── Cloud Layer (Flask / Supabase / Dashboard)
-├── Data Logging
-├── Alert System
-└── Visualization
+    ├── Data Logging
+    ├── Alert System
+    └── Visualization
+```
 
 
 ## ⚙️ Tech Stack
