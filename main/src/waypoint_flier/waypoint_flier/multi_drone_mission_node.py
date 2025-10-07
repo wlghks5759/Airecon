@@ -116,8 +116,15 @@ class MultiDroneMissionNode(Node):
             setpoint.position[0], setpoint.position[1], setpoint.position[2] = 0.0, 0.0, self.takeoff_altitude
             self.publish_trajectory_setpoint(1, setpoint)
             
-            current_z = self.drone_states[1]['local_position'].z
-            if abs(current_z - self.takeoff_altitude) < abs(self.takeoff_altitude * 0.05):
+            current_pos = self.drone_states[1]['local_position']
+            current_z = current_pos.z
+            current_xy_err = np.linalg.norm([current_pos.x, current_pos.y]) # 수평 위치 오차 계산
+
+            # [수정/확인]: Z 축 도달 및 XY 위치 안정성 확인
+            is_at_altitude = abs(current_z - self.takeoff_altitude) < abs(self.takeoff_altitude * 0.05)
+            is_xy_stable = current_xy_err < 0.2 # 예: 20cm 이내
+
+            if is_at_altitude and is_xy_stable:
                 self.get_logger().info("1번 드론 이륙 완료. 웨이포인트 비행 시작.")
                 self.mission_state = "DRONE_1_FLYING_WAYPOINTS"
 
@@ -287,7 +294,7 @@ class MultiDroneMissionNode(Node):
         self.get_logger().info(f"총 {len(self.waypoints)}개의 웨이포인트가 생성되었습니다.")
     
     def load_poses_from_file(self):
-        file_path = "/home/yoo/PROJECT/goliath/px4msgtest/poses_odom_modified.txt"
+        file_path = "/home/yoo/PROJECT/Airecon/main/poses_odom_modified.txt"
         if not os.path.exists(file_path):
             self.get_logger().error(f"오류: 경로에 파일이 없습니다! '{file_path}'")
             return None

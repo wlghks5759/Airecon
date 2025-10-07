@@ -34,9 +34,9 @@ class YoloGimbalControllerNode(Node):
 
         # --- Publishers ---
         self.pitch_publisher_ = self.create_publisher(
-            Float64, '/model/x500_gimbal_0/command/gimbal_pitch', 10)
+            Float64, '/model/x500_gimbal_1/command/gimbal_pitch', 10)
         self.yaw_publisher_ = self.create_publisher(
-            Float64, '/model/x500_gimbal_0/command/gimbal_yaw', 10)
+            Float64, '/model/x500_gimbal_1/command/gimbal_yaw', 10)
         # 객체 인식 결과를 발행할 퍼블리셔
         self.detection_publisher_ = self.create_publisher(
             Image, '/gimbal/image_with_detections', 10)
@@ -45,7 +45,7 @@ class YoloGimbalControllerNode(Node):
         # 짐벌 카메라 이미지 토픽 구독
         self.image_subscription_ = self.create_subscription(
             Image,
-            '/world/world_demo/model/x500_gimbal_0/link/camera_link/sensor/gimbal/image',
+            '/world/world_demo/model/x500_gimbal_1/link/camera_link/sensor/gimbal/image',
             self.image_callback,
             10)
 
