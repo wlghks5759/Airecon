@@ -1,5 +1,5 @@
 # 🛩️ Airecon - AI-powered aerial monitoring system for industrial anomaly detection
-# 제조업 현장의 이상 상황을 감지하는 자율주행 항공 감시 드론 시스템
+# 제조업 현장의 이상 상황을 감지하는 자율주행 항공 감시 드론 시스템 (개인 프로젝트)
 
 ![Airecon Demo](1st.gif)
 
