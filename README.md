@@ -47,13 +47,12 @@ Airecon
 ---
 
 
-## 🧭 Roadmap
+## 🧭 진행순서
 
-- [ ] Real-time anomaly detection (fire/smoke/person)  
-- [ ] PX4 + ROS 2 autonomous patrol mission  
-- [ ] Multi-drone coordination system  
-- [ ] Cloud alert dashboard integration  
-- [ ] Edge computing optimization (Jetson Orin)  
+- [ ] 공장내부 V-slam을 통한 매핑 진행
+- [ ] Waypoint 생성 후 전저리 작업
+- [ ] 멀티드론 배치 후 산재예방드론 가동
+- [ ] 실시간 상황 YOLO로 분석, 하나의 드론이 임무를 마치면 다음드론이 이어서 임무 수행
 
 ---
 
@@ -61,7 +60,7 @@ Airecon
 
 | Name | Role | Description |
 |------|------|-------------|
-| **Yoo (레게머핀)** | Founder / Lead Dev | System architecture, AI vision, PX4 integration |
+| **Holytorch** | 개인 프로젝트 총괄 | System architecture, AI vision, PX4 integration |
 
 ---
 
