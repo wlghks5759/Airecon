@@ -1,0 +1,13 @@
+repositories:
+  px4_msgs:
+    type: git
+    url: https://github.com/PX4/px4_msgs.git
+    version: release/1.14
+  vision_opencv:
+    type: git
+    url: https://github.com/ros-perception/vision_opencv.git
+    version: humble
+  px4_ros2_interface:
+    type: git
+    url: https://github.com/Auterion/px4-ros2-interface-lib.git
+    version: main

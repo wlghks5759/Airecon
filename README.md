@@ -1,5 +1,17 @@
 # 🛩️ Airecon - AI-powered aerial monitoring system for industrial anomaly detection
-# 제조업 현장의 이상 상황을 감지하는 자율주행 항공 감시 드론 시스템
+# 제조업 현장의 이상 상황을 감지하는 자율주행 항공 감시 드론 시스템 (개인 프로젝트)
+
+## ✅ 개발 환경 (Development Environment)
+
+운영체제(OS): Ubuntu 22.04 LTS
+
+ROS2 배포판: Humble Hawksbill
+
+시뮬레이터: Gazebo Harmonic
+
+<br>
+<br>
+
 
 ![Airecon Demo](1st.gif)
 
@@ -86,6 +98,7 @@ Airecon
 
 
 <br>
+
 ### - 보다 정확한 V-SLAM을 위해 "멀티카메라" SLAM 사용 (RGBD)
 <br>
 
@@ -182,7 +195,25 @@ source install/setup.bash
 ros2 run gimbal_control gimbal_control
 ```
 
-### 🎯 실시간 상황 분석 및 알람
+<br>
+
+## 드론스테이션 위 드론 배치
+![Airecon Demo](4th.png)
+
+<br>
+
+## 첫번째 드론이 작업 수행
+![Airecon Demo](5th.gif)
+
+<br>
+
+## 첫번째 드론과 두번째 드론 작업 교대
+![Airecon Demo](6th.gif)
+
+<br>
+<br>
+
+### 🎯 그 후실시간 상황 분석 및 알람
 
 드론에서 수집된 영상 및 센서 데이터 실시간 분석
 
@@ -190,12 +221,15 @@ ros2 run gimbal_control gimbal_control
 
 한 대 드론이 임무를 마치면 다음 드론이 자동으로 이어서 감시
 
-     
+<br>
 
+![Airecon Demo](1st.gif)
+
+<br>
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**
 
 ---
