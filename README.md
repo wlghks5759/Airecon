@@ -102,6 +102,25 @@ Airecon
 ### - 보다 정확한 V-SLAM을 위해 "멀티카메라" SLAM 사용 (RGBD)
 <br>
 
+## 사용법
+<br>
+
+```bash
+cd path/to/Airecon
+cp tugbot_warehouse.sdf ~/path/to/PROJECT/PX4-Autopilot/Tools/simulation/gz/worlds
+cp x500_depth ~/path/to/PROJECT/PX4-Autopilot/Tools/simulation/gz/models
+cp x500_gimbal ~/path/to/PROJECT/PX4-Autopilot/Tools/simulation/gz/models
+```
+
+```bash
+bash ./install_opencv.sh
+```
+
+```bash
+vcs import main/src < dependencies.repos
+vcs import arucoland/src < dependancies_2.repos
+```
+
 
 ```bash
 cd ~/path/to/PX4-Autopilot/Tools/simulation/gz
@@ -135,6 +154,22 @@ Waypoint 추출 (추후 전처리 과정 진행)
 여러 대의 드론을 동시에 배치하여 공장 전체 감시
 
 한 드론의 임무가 끝나면 다른 드론이 자동으로 테이크 오프 후 임무 수행
+<br>
+```bash
+cd path/to/Airecon
+cp tugbot_warehouse.sdf ~/path/to/PROJECT/PX4-Autopilot/Tools/simulation/gz/worlds
+cp x500_depth ~/path/to/PROJECT/PX4-Autopilot/Tools/simulation/gz/models
+cp x500_gimbal ~/path/to/PROJECT/PX4-Autopilot/Tools/simulation/gz/models
+```
+
+```bash
+bash ./install_opencv.sh
+```
+
+```bash
+vcs import main/src < dependencies.repos
+vcs import arucoland/src < dependancies_2.repos
+```
 
 ```bash
 cd ~/path/to/PX4-Autopilot/Tools/simulation/gz
