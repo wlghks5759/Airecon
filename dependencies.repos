@@ -1,0 +1,17 @@
+repositories:
+  px4_msgs:
+    type: git
+    url: https://github.com/PX4/px4_msgs.git
+    version: release/1.14
+  rtabmap_ros:
+    type: git
+    url: https://github.com/introlab/rtabmap_ros.git
+    version: humble-devel
+  rtabmap:
+    type: git
+    url: https://github.com/introlab/rtabmap.git
+    version: humble-devel
+  vision_opencv:
+    type: git
+    url: https://github.com/ros-perception/vision_opencv.git
+    version: humble
