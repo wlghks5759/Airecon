@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='x500_depth'>
+    <include merge='true'>
+      <uri>x500</uri>
+    </include>
+    
+
+    <include>
+      <uri>model://OakD-Lite</uri>
+      <name>oakd_lite_camera_1</name>
+      <pose>-0.03 0.15 0.242 0 0 1.5708</pose>
+    </include>
+    <joint name="CameraJoint_Left" type="fixed">
+      <parent>base_link</parent>
+      <child>oakd_lite_camera_1::camera_link</child>
+    </joint>
+
+    <include>
+      <uri>model://OakD-Lite</uri>
+      <name>oakd_lite_camera_2</name>
+      <pose>0.12 0.03 0.242 0 0 0</pose>
+    </include>
+    <joint name="CameraJoint_Front" type="fixed">
+      <parent>base_link</parent>
+      <child>oakd_lite_camera_2::camera_link</child>
+    </joint>
+
+    <include>
+      <uri>model://OakD-Lite</uri>
+      <name>oakd_lite_camera_3</name>
+      <pose>0.03 -0.15 0.242 0 0 -1.5708</pose>
+    </include>
+    <joint name="CameraJoint_Right" type="fixed">
+      <parent>base_link</parent>
+      <child>oakd_lite_camera_3::camera_link</child>
+    </joint>
+
+    <include>
+      <uri>model://OakD-Lite</uri>
+      <name>oakd_lite_camera_4</name>
+      <pose>-0.12 -0.03 0.242 0 0 3.1416</pose>
+    </include>
+    <joint name="CameraJoint_Back" type="fixed">
+      <parent>base_link</parent>
+      <child>oakd_lite_camera_4::camera_link</child>
+    </joint>
+   <!-- 
+    <include>
+      <uri>model://OakD-Lite</uri>
+      <name>oakd_lite_camera_5</name>
+      <pose>0 0.03 0.15 0 1.5708 0</pose>
+    </include>
+    <joint name="CameraJoint_Down" type="fixed">
+      <parent>base_link</parent>
+      <child>oakd_lite_camera_5::camera_link</child>
+    </joint>--> 
+ 
+ 
+ <!-- GIMBAL --> 
+    <include>
+      <uri>model://gimbal</uri>
+      <name>gimbal</name> 
+      <pose>0.1 0 0.26 0 0 3.1416</pose>
+    </include>
+    <joint name="GimbalAttachJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>gimbal::cgo3_mount_link</child>
+    </joint>
+    
+  </model>
+</sdf>

@@ -1,0 +1,547 @@
+<?xml version='1.0' encoding='ASCII'?>
+<sdf version='1.7'>
+  <world name='world_demo'>
+    <!-- 정상 작동 파일의 안정적인 물리 및 중력 설정 -->
+    <gravity>0 0 -9.8</gravity>
+    <physics type="ode">
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+    </physics>
+
+    <!-- 시뮬레이션 시스템 플러그인 -->
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type="adiabatic"/>
+    
+    <scene>
+      <ambient>1 1 1 1</ambient>
+      <background>0.3 0.7 0.9 1</background>
+      <shadows>0</shadows>
+      <grid>1</grid>
+    </scene>
+
+    <!-- 정상 작동 파일의 GUI 플러그인들을 모두 추가 -->
+    <gui fullscreen="0">
+      <!-- 3D scene -->
+      <plugin filename="GzScene3D" name="3D View">
+        <ignition-gui>
+          <title>3D View</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="string" key="state">docked</property>
+        </ignition-gui>
+        <engine>ogre2</engine>
+        <scene>scene</scene>
+        <ambient_light>0.4 0.4 0.4</ambient_light>
+        <background_color>0.8 0.8 0.8</background_color>
+        <camera_pose>13.4 -6.1 2.23 0 0.4 -1.83</camera_pose>
+      </plugin>
+      <!-- World control -->
+      <plugin filename="WorldControl" name="World control">
+        <ignition-gui>
+          <title>World control</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="bool" key="resizable">false</property>
+          <property type="double" key="height">72</property>
+          <property type="double" key="width">121</property>
+          <property type="double" key="z">1</property>
+
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="left" target="left"/>
+            <line own="bottom" target="bottom"/>
+          </anchors>
+        </ignition-gui>
+
+        <play_pause>true</play_pause>
+        <step>true</step>
+        <start_paused>true</start_paused>
+
+      </plugin>
+      
+      
+      <!-- World statistics -->
+      <plugin filename="WorldStats" name="World stats">
+        <ignition-gui>
+          <title>World stats</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="bool" key="resizable">false</property>
+          <property type="double" key="height">110</property>
+          <property type="double" key="width">290</property>
+          <property type="double" key="z">1</property>
+
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="right" target="right"/>
+            <line own="bottom" target="bottom"/>
+          </anchors>
+        </ignition-gui>
+
+        <sim_time>true</sim_time>
+        <real_time>true</real_time>
+        <real_time_factor>true</real_time_factor>
+        <iterations>true</iterations>
+      </plugin>
+      
+      <plugin filename="TransformControl" name="Transform control">
+          <ignition-gui>
+              <property type="bool" key="showTitleBar">false</property>
+              <property key="x" type="double">0</property>
+              <property key="y" type="double">0</property>
+              <property key="width" type="double">250</property>
+              <property key="height" type="double">50</property>
+              <property key="state" type="string">floating</property>
+              <property key="cardBackground" type="string">#666666</property>
+          </ignition-gui>
+      </plugin>
+      <plugin filename="Shapes" name="Shapes">
+          <ignition-gui>
+              <property type="bool" key="showTitleBar">false</property>
+              <property key="x" type="double">250</property>
+              <property key="y" type="double">0</property>
+              <property key="width" type="double">150</property>
+              <property key="height" type="double">50</property>
+              <property key="state" type="string">floating</property>
+              <property key="cardBackground" type="string">#666666</property>
+          </ignition-gui>
+      </plugin>
+      <plugin filename="Screenshot" name="Screenshot">
+          <ignition-gui>
+              <property type="bool" key="showTitleBar">false</property>
+              <property key="x" type="double">400</property>
+              <property key="y" type="double">0</property>
+              <property key="width" type="double">50</property>
+              <property key="height" type="double">50</property>
+              <property key="state" type="string">floating</property>
+              <property key="cardBackground" type="string">#666666</property>
+          </ignition-gui>
+      </plugin>
+      <plugin filename="ComponentInspector" name="Component inspector">
+          <ignition-gui>
+              <property key="x" type="double">0</property>
+              <property key="y" type="double">0</property>
+              <property key="width" type="double">400</property>
+              <property key="height" type="double">375</property>
+              <property key="state" type="string">docked_collapsed</property>
+          </ignition-gui>
+      </plugin>
+      <plugin filename="EntityTree" name="Entity tree">
+          <ignition-gui>
+              <property key="x" type="double">0</property>
+              <property key="y" type="double">0</property>
+              <property key="width" type="double">400</property>
+              <property key="height" type="double">375</property>
+              <property key="state" type="string">docked_collapsed</property>
+          </ignition-gui>
+      </plugin>
+      <plugin filename="Teleop" name="Teleop">
+          <ignition-gui>
+              <property key="x" type="double">0</property>
+              <property key="y" type="double">0</property>
+              <property key="width" type="double">400</property>
+              <property key="height" type="double">900</property>
+              <property key="state" type="string">docked</property>
+          </ignition-gui>
+      </plugin>
+    </gui>
+
+    <scene>
+      <ambient>1 1 1 1</ambient>
+      <background>0.3 0.7 0.9 1</background>
+      <shadows>0</shadows>
+      <grid>1</grid>
+    </scene>
+
+    <!-- 조명 추가 -->
+    <light type="directional" name="sun">
+      <cast_shadows>0</cast_shadows>
+      <pose>-5 -3 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>1 1 1 1</specular>
+      <direction>0 0 -1</direction>
+    </light>
+
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>1 1</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+      </link>
+      <pose>0 0 0 0 0 0</pose>
+    </model>
+
+    <!-- 원하는 Depot 모델만 깔끔하게 포함 -->
+    <include>
+      <uri>
+        https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Depot
+      </uri>
+      <pose>7.19009 1.09982 0 0 0 0</pose>
+    </include>
+    
+    <!-- 걸어다니는 사람 Actor 정의 -->
+    <actor name="person_walking_actor1">
+      <skin>
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <interpolate_x>true</interpolate_x>
+        <scale>1.0</scale>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0.0</time>
+            <pose>2 0 1 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>4.0</time>
+            <pose>4 0 1 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>5.0</time>
+            <pose>4 0 1 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>9.0</time>
+            <pose>4 4 1 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>10.0</time>
+            <pose>4 4 1 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>14.0</time>
+            <pose>2 4 1 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>15.0</time>
+            <pose>2 4 1 0 0 4.71</pose>
+          </waypoint>
+          <waypoint>
+            <time>19.0</time>
+            <pose>2 0 1 0 0 4.71</pose>
+          </waypoint>
+          <waypoint>
+            <time>20.0</time>
+            <pose>2 0 1 0 0 0</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <actor name="person_walking_actor2">
+      <skin>
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <interpolate_x>true</interpolate_x>
+        <scale>1.0</scale>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0.0</time>
+            <pose>0 -2 1 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>4.0</time>
+            <pose>5 -2 1 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>6.0</time>
+            <pose>5 -2 1 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>10.0</time>
+            <pose>0 -2 1 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>12.0</time>
+            <pose>0 -2 1 0 0 0</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+    
+    <actor name="person_walking_actor3">
+      <skin>
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x> 
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0.0</time>
+            <pose>0 3.5 1.0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>4.0</time>
+            <pose>5 3.5 1.0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>6.0</time>
+            <pose>5 3.5 1.0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>10.0</time>
+            <pose>0 3.5 1.0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>12.0</time>
+            <pose>0 3.5 1.0 0 0 0</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+    
+    <actor name="person_walking_actor4">
+      <skin>
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x> 
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0.0</time>
+            <pose>11 0 1.0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>4.0</time>
+            <pose>11 3.5 1.0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>5.0</time>
+            <pose>11 3.5 1.0 0 0 4.71</pose>
+          </waypoint>
+          <waypoint>
+            <time>9.0</time>
+            <pose>11 0 1.0 0 0 4.71</pose>
+          </waypoint>
+          <waypoint>
+            <time>10.0</time>
+            <pose>11 0 1.0 0 0 1.57</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+    
+    <actor name="person_walking_actor5">
+      <skin>
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x> 
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0.0</time>
+            <pose>15 0 1.0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>4.0</time>
+            <pose>15 3.5 1.0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>5.0</time>
+            <pose>15 3.5 1.0 0 0 4.71</pose>
+          </waypoint>
+          <waypoint>
+            <time>9.0</time>
+            <pose>15 0 1.0 0 0 4.71</pose>
+          </waypoint>
+          <waypoint>
+            <time>10.0</time>
+            <pose>15 0 1.0 0 0 1.57</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+    
+    <actor name="person_walking_actor6">
+      <skin>
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x> 
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0.0</time>
+            <pose>19 0 1.0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>4.0</time>
+            <pose>19 3.5 1.0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>5.0</time>
+            <pose>19 3.5 1.0 0 0 4.71</pose>
+          </waypoint>
+          <waypoint>
+            <time>9.0</time>
+            <pose>19 0 1.0 0 0 4.71</pose>
+          </waypoint>
+          <waypoint>
+            <time>10.0</time>
+            <pose>19 0 1.0 0 0 1.57</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+<!-- 추가된 박스 모델 아루고 0번-->
+    <model name='unit_box_0'>
+      <pose>0 0 0.25 0 0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 1.0 1</ambient>
+            <diffuse>1.0 1.0 1.0 1</diffuse>
+            <specular>1.0 1.0 1.0 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- 박스 위에 놓인 ArUco 태그 모델 -->
+    <include>
+      <uri>model://arucotag_0</uri>
+      <name>arucotag_0</name> 
+      <pose>0 0 0.51 0 0 0</pose>
+    </include>
+
+
+
+<!-- 추가된 박스 모델 아루고 1번-->
+    <model name='unit_box_1'>
+      <pose>-3 0 0.25 0 0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 1.0 1</ambient>
+            <diffuse>1.0 1.0 1.0 1</diffuse>
+            <specular>1.0 1.0 1.0 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    
+
+    <!-- 박스 위에 놓인 ArUco 태그 모델 -->
+    <include>
+      <uri>model://arucotag_1</uri>
+      <name>arucotag_1</name> 
+      <pose>-3 0 0.51 0 0 0</pose>
+    </include>
+
+
+
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>47.397971057728974</latitude_deg>
+      <longitude_deg>8.546163739800146</longitude_deg>
+      <elevation>0</elevation>
+    </spherical_coordinates>
+
+  </world>
+</sdf>
