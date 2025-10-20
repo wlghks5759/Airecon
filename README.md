@@ -121,6 +121,18 @@ vcs import main/src < dependencies.repos
 vcs import arucoland/src < dependancies_2.repos
 ```
 
+```bash
+cd path/to/Airecon/main
+colcon build
+
+```
+
+```bash
+cd path/to/Airecon/arucoland
+colcon build
+
+```
+
 
 ```bash
 cd ~/path/to/PX4-Autopilot/Tools/simulation/gz
@@ -169,6 +181,18 @@ bash ./install_opencv.sh
 ```bash
 vcs import main/src < dependencies.repos
 vcs import arucoland/src < dependancies_2.repos
+```
+
+```bash
+cd path/to/Airecon/main
+colcon build
+
+```
+
+```bash
+cd path/to/Airecon/arucoland
+colcon build
+
 ```
 
 ```bash
